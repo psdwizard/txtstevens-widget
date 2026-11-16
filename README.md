@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.1.0/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.2.0/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -18,3 +18,7 @@ Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 ## Updating
 
 Edit the file, commit, and create a new version tag (for example `v1.0.1`), then change the version in the script URL. Pinning a version means edits never reach the live site until the URL is changed.
+
+## Vehicle page text bar (v1.2.0)
+
+On vehicle pages, Ride Motive shows a red phone bar ("Speak to a team member"). The script turns it into a text button: chat icon, +1 (203) 954-5655, "Text with a team member", linking to sms:12039545655. It finds the bar by its `PhoneCTA-module` class, so if Ride Motive renames that component the bar falls back to the original phone call.

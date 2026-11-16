@@ -112,6 +112,38 @@
   root.querySelector('.sa-txt-num').onclick=function(){track('panel_number');};
   root.querySelector('.sa-txt-x').onclick=function(){setOpen(false);pill.focus();};
   document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.keyCode===27)&&isOpen){setOpen(false);pill.focus();}});
+  /* Ride Motive's red phone bar on vehicle pages: turn it into a text button. */
+  var CTA_SEL='a[class*="PhoneCTA-module"][class*="phoneCard"]', CTA_SUB='Text with a team member';
+  var ctaIcon='<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" style="display:block;width:26px;height:26px;margin:8px"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" d="M16 4.5C8.8 4.5 3 9.3 3 15.3c0 3 1.5 5.7 3.9 7.6l-1.3 5.2 5.4-2.9c1.5.5 3.2.7 5 .7 7.2 0 13-4.8 13-10.6S23.2 4.5 16 4.5z"/></svg>';
+  function patchCta(){
+    var cards=document.querySelectorAll(CTA_SEL);
+    for(var i=0;i<cards.length;i++){
+      var a=cards[i];
+      if(a.getAttribute('href')!==SMS)a.setAttribute('href',SMS);
+      if(a.getAttribute('aria-label')!=='Text Stevens at '+SHOWN)a.setAttribute('aria-label','Text Stevens at '+SHOWN);
+      var num=a.querySelector('[class*="phoneNumber"]');
+      if(num&&num.textContent!==SHOWN)num.textContent=SHOWN;
+      var sub=a.querySelector('[class*="subtitle"]');
+      if(sub&&sub.textContent!==CTA_SUB)sub.textContent=CTA_SUB;
+      var old=a.querySelector('i[data-icon]');
+      if(old&&old.style.display!=='none')old.style.display='none';
+      if(old&&!a.querySelector('.sa-txt-cta-ico')){
+        var ico=document.createElement('span');
+        ico.className=old.className.replace(/\bccc-ico\b/,'')+' sa-txt-cta-ico';
+        ico.setAttribute('aria-hidden','true');
+        ico.innerHTML=ctaIcon;
+        old.parentNode.insertBefore(ico,old.nextSibling);
+      }
+      if(!a.getAttribute('data-sa-txt')){
+        a.setAttribute('data-sa-txt','1');
+        a.addEventListener('click',function(){track('vdp_cta_sms');});
+      }
+    }
+  }
+  var ctaQueued=false;
+  function queueCta(){if(ctaQueued)return;ctaQueued=true;setTimeout(function(){ctaQueued=false;patchCta();},60);}
+  patchCta();
+  try{new MutationObserver(queueCta).observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['href']});}catch(e){}
   setTimeout(function(){
     if(isOpen)return;
     root.className+=' sa-txt-nudge';
