@@ -114,7 +114,7 @@
   document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.keyCode===27)&&isOpen){setOpen(false);pill.focus();}});
   /* Ride Motive's red phone bar on vehicle pages: turn it into a text button. */
   var CTA_SEL='a[class*="PhoneCTA-module"][class*="phoneCard"]', CTA_SUB='Text with a team member';
-  var ctaIcon='<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" style="display:block;width:26px;height:26px;margin:8px"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" d="M16 4.5C8.8 4.5 3 9.3 3 15.3c0 3 1.5 5.7 3.9 7.6l-1.3 5.2 5.4-2.9c1.5.5 3.2.7 5 .7 7.2 0 13-4.8 13-10.6S23.2 4.5 16 4.5z"/></svg>';
+  var ctaIcon='<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false" style="display:block;width:26px;height:26px;margin:0;flex:0 0 auto"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" d="M16 4.5C8.8 4.5 3 9.3 3 15.3c0 3 1.5 5.7 3.9 7.6l-1.3 5.2 5.4-2.9c1.5.5 3.2.7 5 .7 7.2 0 13-4.8 13-10.6S23.2 4.5 16 4.5z"/></svg>';
   function patchCta(){
     var cards=document.querySelectorAll(CTA_SEL);
     for(var i=0;i<cards.length;i++){
@@ -131,6 +131,7 @@
         var ico=document.createElement('span');
         ico.className=old.className.replace(/\bccc-ico\b/,'')+' sa-txt-cta-ico';
         ico.setAttribute('aria-hidden','true');
+        ico.style.cssText='display:flex;align-items:center;justify-content:center;padding:0;line-height:0';
         ico.innerHTML=ctaIcon;
         old.parentNode.insertBefore(ico,old.nextSibling);
       }
