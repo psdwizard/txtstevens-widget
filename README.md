@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.5.0/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.6.0/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -26,7 +26,7 @@ On vehicle pages, Ride Motive shows a red phone bar ("Speak to a team member"). 
 ## v1.3.0
 
 - Text links are pre-filled. On vehicle pages: "Hi, I'm interested in the [year make model trim] (stock [number])." from the page's Vehicle structured data. Elsewhere: "Hi Stevens Ford, I have a question."
-- Computer visitors see a QR code in the panel. It encodes `SMSTO:+12039545655:Hi Stevens Ford, I have a question.` (generic message; generated with macOS CoreImage and checked with its QR decoder).
+- Computer visitors see a QR code in the panel. It encodes `SMSTO:+12039545655:Hi Stevens, I have a question.` (from v1.6.0) (generic message; generated with macOS CoreImage and checked with its QR decoder).
 - Panel wording: "Text Stevens Ford / A real person replies by text" and "Send us a text and a team member will reply."
 
 ## v1.4.0
@@ -45,3 +45,10 @@ The teaser bubble now shows once for each vehicle page (and once for all other p
 - Keeps clear of the iPhone home bar (`env(safe-area-inset-bottom)`; adds nothing where the browser reports no inset).
 - Clicking or tapping anywhere outside the widget closes the panel.
 - Compact panel on screens 820px tall or less, so it fits a typical laptop browser window without scrolling.
+
+## v1.6.0
+
+- Dealer name follows the vehicle's brand: "Text Stevens Lincoln" on Lincoln vehicles, "Text Stevens Ford" on Ford vehicles, "Text Stevens" elsewhere. General pre-filled texts say "Hi Stevens".
+- The live timestamp in the greeting is gone (it implied someone was replying at any hour).
+- Shorter wording: greeting "Pick a question, or write your own.", QR "Scan to text us from your phone."
+- Shorter model names: "Super Duty F-350 DRW" shows as "F-350"; names over 18 characters use their first word.
