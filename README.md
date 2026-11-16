@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.3.1/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.4.0/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -28,3 +28,10 @@ On vehicle pages, Ride Motive shows a red phone bar ("Speak to a team member"). 
 - Text links are pre-filled. On vehicle pages: "Hi, I'm interested in the [year make model trim] (stock [number])." from the page's Vehicle structured data. Elsewhere: "Hi Stevens Ford, I have a question."
 - Computer visitors see a QR code in the panel. It encodes `SMSTO:+12039545655:Hi Stevens Ford, I have a question.` (generic message; generated with macOS CoreImage and checked with its QR decoder).
 - Panel wording: "Text Stevens Ford / A real person replies by text" and "Send us a text and a team member will reply."
+
+## v1.4.0
+
+- The pill label follows the page: "Text us about this F-150" on vehicle pages, "Text Us – Get Answers Fast" elsewhere.
+- A teaser bubble appears once per visit, after 20 seconds or when the visitor scrolls halfway down. It never shows again once dismissed or once the visitor has opened the widget (sessionStorage keys `saTxtTeased`, `saTxtUsed`).
+- The panel offers three one-tap questions, each opening a pre-filled text. The pill now opens the panel on phones too.
+- Extra dataLayer actions: `teaser_show`, `teaser_click`, `teaser_close`, `choice_available`, `choice_tradein`, `choice_payment`, `choice_find`, `choice_offers`.
