@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.6.3/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.7.0/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -64,3 +64,7 @@ On screens 768px wide or narrower (phones), the pill always reads "Text Us".
 ## v1.6.3
 
 Vehicle page red bar: "Text us about this [model]" with "Get real answers from a real person fast", and no phone number shown.
+
+## v1.7.0
+
+Back to the original panel (TxtStevens / Customer Care Chat, greeting with time, TXT Stevens Now), without the question buttons, QR code or phone number. The pill, teaser, pre-filled texts and red bar stay as in v1.6.3.
