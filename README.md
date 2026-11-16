@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.2.1/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.3.0/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -22,3 +22,9 @@ Edit the file, commit, and create a new version tag (for example `v1.0.1`), then
 ## Vehicle page text bar (v1.2.0)
 
 On vehicle pages, Ride Motive shows a red phone bar ("Speak to a team member"). The script turns it into a text button: chat icon, +1 (203) 954-5655, "Text with a team member", linking to sms:12039545655. It finds the bar by its `PhoneCTA-module` class, so if Ride Motive renames that component the bar falls back to the original phone call.
+
+## v1.3.0
+
+- Text links are pre-filled. On vehicle pages: "Hi, I'm interested in the [year make model trim] (stock [number])." from the page's Vehicle structured data. Elsewhere: "Hi Stevens Ford, I have a question."
+- Computer visitors see a QR code in the panel. It encodes `SMSTO:+12039545655:Hi Stevens Ford, I have a question.` (generic message; generated with macOS CoreImage and checked with its QR decoder).
+- Panel wording: "Text Stevens Ford / A real person replies by text" and "Send us a text and a team member will reply."
