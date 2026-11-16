@@ -1,4 +1,4 @@
-/* TxtStevens SMS chat widget for stevensauto.com, v1.4.0. Self-contained: injects its own styles. */
+/* TxtStevens SMS chat widget for stevensauto.com, v1.4.1. Self-contained: injects its own styles. */
 (function(){
   if(document.getElementById('sa-txt'))return;
   var css=document.createElement('style');
@@ -44,7 +44,7 @@
   document.body.appendChild(root);
   var pill=root.querySelector('.sa-txt-pill'), time=root.querySelector('.sa-txt-time');
   var full=root.querySelector('.sa-txt-full'), choices=root.querySelector('.sa-txt-choices'), teaseGo=root.querySelector('.sa-txt-tease-go');
-  var isOpen=false, timer=null, teasing=false, nudging=false;
+  var isOpen=false, timer=null, teasing=false, nudging=false, teaseTimer=null, armedAt=0;
 
   function track(action){
     try{(window.dataLayer=window.dataLayer||[]).push({event:'txtstevens_click',txtstevens_action:action});}catch(e){}
@@ -112,7 +112,9 @@
   function refresh(){
     var c=content();
     if(c.key===lastKey)return link;
+    var moved=lastKey!==null;
     lastKey=c.key;
+    if(moved){teasing=false;setClass();arm();}
     link=smsLink(c.body);
     full.textContent=c.label;
     teaseGo.innerHTML=c.tease;
@@ -165,26 +167,39 @@
   root.querySelector('.sa-txt-x').onclick=function(){setOpen(false);pill.focus();};
   document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.keyCode===27)&&isOpen){setOpen(false);pill.focus();}});
 
-  /* Teaser bubble: once per visit, after a pause or a scroll, never once the visitor has used the widget. */
+  /* Teaser bubble: after a pause or a scroll. Shows once for each vehicle (and once for all other
+     pages together), and stops for the rest of the visit once the visitor dismisses it or opens the widget. */
+  function teasedKeys(){return (store('saTxtTeased')||'').split('\n');}
   function tease(){
-    if(teasing||isOpen||store('saTxtTeased')||store('saTxtUsed'))return;
+    if(teasing||isOpen||store('saTxtOff')||store('saTxtUsed'))return;
     refresh();
+    var keys=teasedKeys();
+    for(var i=0;i<keys.length;i++)if(keys[i]===lastKey)return;
+    keys.push(lastKey);
+    store('saTxtTeased',keys.join('\n'));
     teasing=true;
-    store('saTxtTeased','1');
     track('teaser_show');
     setClass();
   }
   teaseGo.onclick=function(){track('teaser_click');setOpen(true);};
-  root.querySelector('.sa-txt-tease-x').onclick=function(){teasing=false;track('teaser_close');setClass();};
-  setTimeout(tease,TEASE_AFTER_MS);
+  root.querySelector('.sa-txt-tease-x').onclick=function(){teasing=false;store('saTxtOff','1');track('teaser_close');setClass();};
   function onScroll(){
+    if(new Date().getTime()-armedAt<1500)return;
     var doc=document.documentElement, max=doc.scrollHeight-window.innerHeight;
     if(max>200&&(window.pageYOffset||doc.scrollTop||0)/max>=TEASE_SCROLL){
       window.removeEventListener('scroll',onScroll);
       tease();
     }
   }
-  window.addEventListener('scroll',onScroll,{passive:true});
+  /* Start (or restart, after moving to another page without a reload) the teaser's timer and scroll watch. */
+  function arm(){
+    if(teaseTimer)clearTimeout(teaseTimer);
+    armedAt=new Date().getTime();
+    teaseTimer=setTimeout(tease,TEASE_AFTER_MS);
+    window.removeEventListener('scroll',onScroll);
+    window.addEventListener('scroll',onScroll,{passive:true});
+  }
+  arm();
 
   /* Ride Motive's red phone bar on vehicle pages: turn it into a text button. */
   var CTA_SEL='a[class*="PhoneCTA-module"][class*="phoneCard"]', CTA_SUB='Text with a team member';
