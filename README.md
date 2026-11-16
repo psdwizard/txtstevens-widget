@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.4.0/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.4.1/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -35,3 +35,7 @@ On vehicle pages, Ride Motive shows a red phone bar ("Speak to a team member"). 
 - A teaser bubble appears once per visit, after 20 seconds or when the visitor scrolls halfway down. It never shows again once dismissed or once the visitor has opened the widget (sessionStorage keys `saTxtTeased`, `saTxtUsed`).
 - The panel offers three one-tap questions, each opening a pre-filled text. The pill now opens the panel on phones too.
 - Extra dataLayer actions: `teaser_show`, `teaser_click`, `teaser_close`, `choice_available`, `choice_tradein`, `choice_payment`, `choice_find`, `choice_offers`.
+
+## v1.4.1
+
+The teaser bubble now shows once for each vehicle page (and once for all other pages together). It stops for the rest of the visit once the visitor dismisses it (`saTxtOff`) or opens the widget (`saTxtUsed`).
