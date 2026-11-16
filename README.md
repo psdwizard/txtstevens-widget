@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.6.0/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.6.1/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -52,3 +52,7 @@ The teaser bubble now shows once for each vehicle page (and once for all other p
 - The live timestamp in the greeting is gone (it implied someone was replying at any hour).
 - Shorter wording: greeting "Pick a question, or write your own.", QR "Scan to text us from your phone."
 - Shorter model names: "Super Duty F-350 DRW" shows as "F-350"; names over 18 characters use their first word.
+
+## v1.6.1
+
+The panel says "Text Stevens" on every page, including Ford and Lincoln vehicles.

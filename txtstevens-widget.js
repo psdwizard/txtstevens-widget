@@ -1,4 +1,4 @@
-/* TxtStevens SMS chat widget for stevensauto.com, v1.6.0. Self-contained: injects its own styles. */
+/* TxtStevens SMS chat widget for stevensauto.com, v1.6.1. Self-contained: injects its own styles. */
 (function(){
   if(document.getElementById('sa-txt'))return;
   var css=document.createElement('style');
@@ -71,8 +71,7 @@
     function clean(s){return String(s||'').replace(/[®™]/g,'').replace(/\s+/g,' ').trim();}
     var name=clean(found?found.name:document.title.replace(/\s+at Stevens.*$/i,''));
     if(!name)return null;
-    var brand=clean(found&&found.brand&&(found.brand.name||found.brand))+' '+name;
-    var dealer=/lincoln/i.test(brand)?'Stevens Lincoln':/ford/i.test(brand)?'Stevens Ford':'Stevens';
+    var dealer='Stevens';
     var model=clean(found&&found.model&&(found.model.name||found.model))
       .replace(/^Super Duty\s+/i,'').replace(/\s+(DRW|SRW)$/i,'');
     if(model.length>18)model=model.split(' ')[0];
