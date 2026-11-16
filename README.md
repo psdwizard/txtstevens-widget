@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.6.2/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.6.3/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -60,3 +60,7 @@ The panel says "Text Stevens" on every page, including Ford and Lincoln vehicles
 ## v1.6.2
 
 On screens 768px wide or narrower (phones), the pill always reads "Text Us".
+
+## v1.6.3
+
+Vehicle page red bar: "Text us about this [model]" with "Get real answers from a real person fast", and no phone number shown.
