@@ -1,4 +1,4 @@
-/* TxtStevens SMS chat widget for stevensauto.com, v1.7.0. Self-contained: injects its own styles. */
+/* TxtStevens SMS chat widget for stevensauto.com, v1.7.1. Self-contained: injects its own styles. */
 (function(){
   if(document.getElementById('sa-txt'))return;
   var css=document.createElement('style');
@@ -86,7 +86,7 @@
         key:'v|'+v.name+'|'+v.stock,
         dealer:v.dealer,
         label:'Text us about this '+v.model,
-        cta:'Text us about this '+v.model,
+        cta:'TXT us about this '+v.model,
         tease:'<strong>Questions about this '+esc(v.model)+'?</strong><em>Text us</em> &ndash; a real person replies.',
         body:'Hi, I’m interested in '+car+'.',
         choices:[
@@ -109,13 +109,13 @@
       ]
     };
   }
-  var lastKey=null, link=SMS, ctaTitle='Text us about this vehicle';
+  var lastKey=null, link=SMS, ctaTitle='TXT us about this vehicle';
   function refresh(){
     var c=content();
     if(c.key===lastKey)return link;
     var moved=lastKey!==null;
     lastKey=c.key;
-    ctaTitle=c.cta||'Text us about this vehicle';
+    ctaTitle=c.cta||'TXT us about this vehicle';
     if(moved){teasing=false;setClass();arm();}
     link=smsLink(c.body);
     full.textContent=c.label;
