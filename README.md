@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.4.1/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.5.0/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -39,3 +39,9 @@ On vehicle pages, Ride Motive shows a red phone bar ("Speak to a team member"). 
 ## v1.4.1
 
 The teaser bubble now shows once for each vehicle page (and once for all other pages together). It stops for the rest of the visit once the visitor dismisses it (`saTxtOff`) or opens the widget (`saTxtUsed`).
+
+## v1.5.0
+
+- Keeps clear of the iPhone home bar (`env(safe-area-inset-bottom)`; adds nothing where the browser reports no inset).
+- Clicking or tapping anywhere outside the widget closes the panel.
+- Compact panel on screens 820px tall or less, so it fits a typical laptop browser window without scrolling.
