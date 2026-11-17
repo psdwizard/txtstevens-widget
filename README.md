@@ -7,7 +7,7 @@ A small, self-contained "text us" chat widget for stevensauto.com. It adds a rou
 Add this as a Custom HTML tag in Google Tag Manager, firing on All Pages:
 
 ```html
-<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.7.1/txtstevens-widget.js"></script>
+<script async src="https://cdn.jsdelivr.net/gh/psdwizard/txtstevens-widget@v1.7.2/txtstevens-widget.js"></script>
 ```
 
 ## Files
@@ -72,3 +72,7 @@ Back to the original panel (TxtStevens / Customer Care Chat, greeting with time,
 ## v1.7.1
 
 Vehicle page red bar reads "TXT us about this [model]".
+
+## v1.7.2
+
+Panel subtitle reads "Get real answers from a real person fast".

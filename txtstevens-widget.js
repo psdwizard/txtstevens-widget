@@ -1,4 +1,4 @@
-/* TxtStevens SMS chat widget for stevensauto.com, v1.7.1. Self-contained: injects its own styles. */
+/* TxtStevens SMS chat widget for stevensauto.com, v1.7.2. Self-contained: injects its own styles. */
 (function(){
   if(document.getElementById('sa-txt'))return;
   var css=document.createElement('style');
@@ -15,7 +15,7 @@
     '<div class="sa-txt-panel" id="sa-txt-panel" role="dialog" aria-label="TxtStevens customer care chat">'+
       '<div class="sa-txt-head">'+
         '<div class="sa-txt-av" aria-hidden="true">TxT</div>'+
-        '<div><div class="sa-txt-name">TxtStevens</div><div class="sa-txt-sub">Customer Care Chat</div></div>'+
+        '<div><div class="sa-txt-name">TxtStevens</div><div class="sa-txt-sub">Get real answers from a real person fast</div></div>'+
         '<button type="button" class="sa-txt-x" aria-label="Close chat">&times;</button>'+
       '</div>'+
       '<div class="sa-txt-body"><div class="sa-txt-typing" aria-hidden="true"><i></i><i></i><i></i></div><div class="sa-txt-msg" aria-live="polite">'+
